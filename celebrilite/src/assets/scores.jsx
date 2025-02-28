@@ -16,17 +16,20 @@ const Scores = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
                 {sports.map((sport) => (
                     <Link to={sport.path} key={sport.name} className="group">
-                        <div className="relative overflow-hidden rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300">
-                            <img
-                                src={sport.image}
-                                alt={sport.name}
-                                className="w-full h-60 object-cover"
-                            />
-                            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <h2 className="text-white text-3xl font-semibold">{sport.name}</h2>
-                            </div>
+                    <div className="relative overflow-hidden rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300">
+                        <img
+                            src={sport.image}
+                            alt={sport.name}
+                            className="w-full h-60 object-cover transition-transform duration-300 group-hover:scale-110"
+                        />
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                            <h2 className="text-white text-3xl font-semibold text-center group-hover:text-yellow-400 transition-colors duration-300">
+                                {sport.name}
+                            </h2>
                         </div>
-                    </Link>
+                    </div>
+                </Link>
+                
                 ))}
             </div>
         </div>

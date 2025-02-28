@@ -1,4 +1,4 @@
-﻿import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import PlayerPointsTable from "./playerpoints";
 import TeamPointsTable from "./teampointstable";
 import MatchHistory from "./matchhistory";
@@ -133,7 +133,7 @@ const TTCategoryDetails = () => {
             )}
 
             <button
-                onClick={() => navigate("/badminton")}
+                onClick={() => navigate("/tabletennis")}
                 className="mt-6 px-6 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-all"
             >
                 Back to Categories
