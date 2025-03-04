@@ -15,6 +15,18 @@ const Navbar = () => {
 
                 {/* Desktop Menu */}
                 <ul className="hidden md:flex space-x-6">
+                    <li>
+                        <Link to="/updates" className="text-white text-lg hover:text-gray-200">
+                            Updates
+                        </Link>
+                    </li>
+
+                    <li>
+                        <Link to="/rules" className="text-white text-lg hover:text-gray-200">
+                            Rules
+                        </Link>
+                    </li>
+                   
                    
                     <li>
                         <Link to="/scores" className="text-white text-lg hover:text-gray-200">
@@ -31,6 +43,12 @@ const Navbar = () => {
                             Leaderboard
                         </Link>
                     </li>
+                    <li>
+                        <Link to="/login" className="text-white text-lg hover:text-gray-200">
+                            Admin Login
+                        </Link>
+                    </li>
+                    
                 </ul>
 
                 {/* Mobile Menu Button */}
@@ -43,6 +61,16 @@ const Navbar = () => {
             {isOpen && (
                 <div className="md:hidden bg-blue-700 p-4">
                     <ul className="flex flex-col space-y-4">
+                        <li>
+                            <Link to="/updates" className="text-white text-lg block" onClick={() => setIsOpen(false)}>
+                                Updates
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/rules" className="text-white text-lg block" onClick={() => setIsOpen(false)}>
+                                Rules
+                            </Link>
+                        </li>
                         <li>
                             <Link to="/" className="text-white text-lg block" onClick={() => setIsOpen(false)}>
                                 Home
@@ -61,6 +89,11 @@ const Navbar = () => {
                         <li>
                             <Link to="/leaderboard" className="text-white text-lg block" onClick={() => setIsOpen(false)}>
                                 Leaderboard
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/login" className="text-white text-lg block" onClick={() => setIsOpen(false)}>
+                                Admin Login
                             </Link>
                         </li>
                     </ul>
