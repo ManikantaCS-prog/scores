@@ -15,8 +15,9 @@ import BCategoryDetails from './assets/bcategorydetails'
 import TTCategoryDetails from './assets/ttcategorydetails'
 import CCategoryDetails from './assets/ccategorydetails'
 import Login from './assets/login'
-import Rules from './assets/rules'
+
 import Updates from './assets/updates'
+import SportsDashboard from './assets/rules';
 
 
 function App() {
@@ -38,7 +39,7 @@ function App() {
                 <Route path="/darts" element={<Darts />} />
                 <Route path="/funfriday" element={<Funfriday />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/rules" element={<Rules />} />
+                <Route path="/rules" element={<SportsDashboard />} />
                 <Route path="/updates" element={<Updates />} />
                 
             </Routes>
