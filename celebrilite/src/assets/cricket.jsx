@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";  // ✅ Import useNavigate
 
 const Card = ({ children, className = "" }) => {
     return (
@@ -9,6 +10,8 @@ const Card = ({ children, className = "" }) => {
 };
 
 const Cricket = () => {
+    const navigate = useNavigate(); // ✅ Initialize navigate function
+
     const pointsTable = {
         A: [
             { team: "Hogwarts Heros", played: 0, won: 0, lost: 0, nrr: "0.0" },
@@ -28,17 +31,14 @@ const Cricket = () => {
         A: [
             { date: "2025-03-22", time: "07:30 AM", venue: "AM Cricket Ground, Hyderabad", team1: "Hogwarts Heros", team2: "Order Of the Phoenix", score: "UPCOMING", result: "Match Scheduled" },
             { date: "2025-03-22", time: "09:30 AM", venue: "AM Cricket Ground, Hyderabad", team1: "The Giants", team2: "Ravenclaws", score: "UPCOMING", result: "Match Scheduled" },
-            { date: "2025-03-22", time: "12:30 PM", venue: "AM Cricket Ground, Hyderabad", team1: "Ravenclaws", team2: "Ravenclaws", score: "UPCOMING", result: "Match Scheduled" },
-            { date: "2025-03-22", time: "02:30 PM", venue: "AM Cricket Ground, Hyderabad", team1: "The Giants", team2: "Order Of the Phoenix", score: "UPCOMING", result: "Match Scheduled" }
-            
-            ,
+            { date: "2025-03-22", time: "12:30 PM", venue: "AM Cricket Ground, Hyderabad", team1: "Hogwarts Heros", team2: "The Giants", score: "UPCOMING", result: "Match Scheduled" },
+            { date: "2025-03-22", time: "02:30 PM", venue: "AM Cricket Ground, Hyderabad", team1: "Order Of the Phoenix", team2: "Ravenclaws", score: "UPCOMING", result: "Match Scheduled" }
         ],
         B: [
             { date: "2025-03-23", time: "07:30 AM", venue: "AM Cricket Ground, Hyderabad", team1: "Gryffindors", team2: "The Goblins", score: "UPCOMING", result: "Match Scheduled" },
             { date: "2025-03-23", time: "09:30 AM", venue: "AM Cricket Ground, Hyderabad", team1: "The Dragons", team2: "Dark Wizards", score: "UPCOMING", result: "Match Scheduled" },
-            { date: "2025-03-23", time: "12:30 PM", venue: "AM Cricket Ground, Hyderabad", team1: "Gryffindors", team2: "Dark Wizards", score: "UPCOMING", result: "Match Scheduled" },
-            
-            { date: "2025-03-23", time: "02:30 PM", venue: "AM Cricket Ground, Hyderabad", team1: "The Dragons", team2: "The Goblins", score: "UPCOMING", result: "Match Scheduled" },
+            { date: "2025-03-23", time: "12:30 PM", venue: "AM Cricket Ground, Hyderabad", team1: "Gryffindors", team2: "The Dragons", score: "UPCOMING", result: "Match Scheduled" },
+            { date: "2025-03-23", time: "02:30 PM", venue: "AM Cricket Ground, Hyderabad", team1: "The Goblins", team2: "Dark Wizards", score: "UPCOMING", result: "Match Scheduled" },
         ],
     };
 
@@ -94,6 +94,14 @@ const Cricket = () => {
                     </Card>
                 ))}
             </div>
+
+            {/* ✅ Back Button (Now Fixed) */}
+            <button
+                onClick={() => navigate(-1)}
+                className="mb-6 px-4 py-2 bg-red-500 text-white font-bold rounded-lg hover:bg-red-700 transition-all"
+            >
+                ⬅ Back to Sports
+            </button>
         </div>
     );
 };
