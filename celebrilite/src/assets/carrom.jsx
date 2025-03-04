@@ -29,6 +29,12 @@ const Carrom = () => {
                     </div>
                 ))}
             </div>
+            <button
+                onClick={() => navigate(-1)}
+                className="mb-6 px-4 py-2 bg-red-500 text-white font-bold rounded-lg hover:bg-red-700 transition-all"
+            >
+                ⬅ Back to Sports
+            </button>
         </div>
     );
 };
