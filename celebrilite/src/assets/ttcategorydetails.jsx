@@ -11,7 +11,10 @@ const categoryData = {
             { name: "Player B", team: "Team Y", level: 3, points: 30 },
             { name: "Player C", team: "Team Z", level: 8, points: 80 },
         ],
-        teamData: [],
+        teamData: [
+            { name: "Team X", wins: 4, points: 3200 },
+            { name: "Team Y", wins: 2, points: 2800 },
+        ],
         matchData: [
             {
                 matchId: "MS1",
@@ -107,22 +110,23 @@ const TTCategoryDetails = () => {
     return (
         <div className="p-8">
             <h1 className="text-black text-3xl font-bold text-center mb-6">{categoryName}</h1>
+            <div className="mt-4 flex flex-wrap gap-6">
+                {/* Player Points Table */}
+                {data.playerData.length > 0 && (
+                    <div className="flex-1 min-w-[300px] p-6 bg-white shadow-xl rounded-xl">
+                        <h2 className="text-2xl font-bold text-gray-800 mb-4">Player Points Table</h2>
+                        <PlayerPointsTable data={data.playerData} />
+                    </div>
+                )}
 
-            {/* Player Points Table */}
-            {data.playerData.length > 0 && (
-                <div className="mt-4 p-6 bg-white shadow-xl rounded-xl">
-                    <h2 className="text-2xl font-bold text-gray-800 mb-4">Player Points Table</h2>
-                    <PlayerPointsTable data={data.playerData} />
-                </div>
-            )}
-
-            {/* Team Points Table */}
-            {data.teamData.length > 0 && (
-                <div className="mt-4 p-6 bg-white shadow-xl rounded-xl">
-                    <h2 className="text-2xl font-bold text-gray-800 mb-4">Team Points Table</h2>
-                    <TeamPointsTable data={data.teamData} />
-                </div>
-            )}
+                {/* Team Points Table */}
+                {data.teamData.length > 0 && (
+                    <div className="flex-1 min-w-[300px] p-6 bg-white shadow-xl rounded-xl">
+                        <h2 className="text-2xl font-bold text-gray-800 mb-4">Team Points Table</h2>
+                        <TeamPointsTable data={data.teamData} />
+                    </div>
+                )}
+            </div>
 
             {/* Match History */}
             {data.matchData.length > 0 && (

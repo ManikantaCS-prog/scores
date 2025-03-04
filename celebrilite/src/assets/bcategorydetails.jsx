@@ -10,7 +10,10 @@ const categoryData = {
             { name: "Player A", points: 1600 },
             { name: "Player B", points: 1400 },
         ],
-        teamData: [],
+        teamData: [
+            { name: "Team X", wins: 4, points: 3200 },
+            { name: "Team Y", wins: 2, points: 2800 },
+        ],
         matchData: [
             {
                 matchId: "MS1",
@@ -24,7 +27,10 @@ const categoryData = {
         ],
     },
     "Men's Doubles": {
-        playerData: [],
+        playerData: [
+            { name: "Player C", points: 1500 },
+            { name: "Player D", points: 1350 },
+        ],
         teamData: [
             { name: "Team X", wins: 4, points: 3200 },
             { name: "Team Y", wins: 2, points: 2800 },
@@ -46,7 +52,10 @@ const categoryData = {
             { name: "Player C", points: 1500 },
             { name: "Player D", points: 1350 },
         ],
-        teamData: [],
+        teamData: [
+            { name: "Team X", wins: 4, points: 3200 },
+            { name: "Team Y", wins: 2, points: 2800 },
+        ],
         matchData: [
             {
                 matchId: "WS1",
@@ -60,7 +69,10 @@ const categoryData = {
         ],
     },
     "Women's Doubles": {
-        playerData: [],
+        playerData: [
+            { name: "Player C", points: 1500 },
+            { name: "Player D", points: 1350 },
+        ],
         teamData: [
             { name: "Team P", wins: 3, points: 3100 },
             { name: "Team Q", wins: 1, points: 2700 },
@@ -78,7 +90,10 @@ const categoryData = {
         ],
     },
     "Mixed Doubles": {
-        playerData: [],
+        playerData: [
+            { name: "Player C", points: 1500 },
+            { name: "Player D", points: 1350 },
+        ],
         teamData: [
             { name: "Team M", wins: 5, points: 3300 },
             { name: "Team N", wins: 4, points: 3150 },
@@ -107,21 +122,23 @@ const BCategoryDetails = () => {
         <div className="p-8">
             <h1 className="text-black text-3xl font-bold text-center mb-6">{categoryName}</h1>
 
-            {/* Player Points Table */}
-            {data.playerData.length > 0 && (
-                <div className="mt-4 p-6 bg-white shadow-xl rounded-xl">
-                    <h2 className="text-2xl font-bold text-gray-800 mb-4">Player Points Table</h2>
-                    <PlayerPointsTable data={data.playerData} />
-                </div>
-            )}
+            <div className="mt-4 flex flex-wrap gap-6">
+                {/* Player Points Table */}
+                {data.playerData.length > 0 && (
+                    <div className="flex-1 min-w-[300px] p-6 bg-white shadow-xl rounded-xl">
+                        <h2 className="text-2xl font-bold text-gray-800 mb-4">Player Points Table</h2>
+                        <PlayerPointsTable data={data.playerData} />
+                    </div>
+                )}
 
-            {/* Team Points Table */}
-            {data.teamData.length > 0 && (
-                <div className="mt-4 p-6 bg-white shadow-xl rounded-xl">
-                    <h2 className="text-2xl font-bold text-gray-800 mb-4">Team Points Table</h2>
-                    <TeamPointsTable data={data.teamData} />
-                </div>
-            )}
+                {/* Team Points Table */}
+                {data.teamData.length > 0 && (
+                    <div className="flex-1 min-w-[300px] p-6 bg-white shadow-xl rounded-xl">
+                        <h2 className="text-2xl font-bold text-gray-800 mb-4">Team Points Table</h2>
+                        <TeamPointsTable data={data.teamData} />
+                    </div>
+                )}
+            </div>
 
             {/* Match History */}
             {data.matchData.length > 0 && (

@@ -1,5 +1,4 @@
 ﻿import { useState } from "react";
-import { Link } from "react-router-dom";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -8,7 +7,7 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         localStorage.setItem("auth", true);
-        window.location.href = "/dashboard";
+        window.location.href = "/rules";
     };
 
     return (
