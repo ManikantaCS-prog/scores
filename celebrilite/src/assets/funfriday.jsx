@@ -1,8 +1,9 @@
-﻿import React, { useState } from "react";
+﻿import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Trophy, Calendar, Users } from "lucide-react";
 
-// Sample Data for 8 Weeks of Fun Friday Events
+// Sample Data for 4 Weeks of Fun Friday Events
 const funFridayData = [
     {
         week: "Week 1",
@@ -95,6 +96,7 @@ const calculateTotalPoints = (weeksData) => {
 
 // FunFriday Component
 const FunFriday = () => {
+    const navigate = useNavigate();
     const [selectedWeek, setSelectedWeek] = useState(funFridayData.length - 1); // Default: Last week
     const data = funFridayData[selectedWeek];
     const aggregatedPointsTable = calculateTotalPoints(funFridayData.slice(0, selectedWeek + 1)); // Sum up points till selected week
@@ -107,9 +109,9 @@ const FunFriday = () => {
                     <button
                         key={week.week}
                         className={`px-4 py-2 rounded-lg text-lg font-semibold ${selectedWeek === index
-                                ? "bg-blue-600 text-white"
-                                : "bg-gray-300 text-gray-800 hover:bg-gray-400"
-                            }`}
+                            ? "bg-blue-600 text-white"
+                            : "bg-gray-300 text-gray-800 hover:bg-gray-400"
+                        }`}
                         onClick={() => setSelectedWeek(index)}
                     >
                         {week.week}
@@ -157,6 +159,16 @@ const FunFriday = () => {
                     </table>
                 </div>
             </motion.div>
+
+            {/* Back Button */}
+            <div className="flex justify-center mt-6">
+                <button
+                    onClick={() => navigate(-1)}
+                    className="px-6 py-3 bg-red-500 text-white font-bold rounded-lg hover:bg-red-700 transition-all"
+                >
+                    Back
+                </button>
+            </div>
         </div>
     );
 };
