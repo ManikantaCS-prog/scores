@@ -1,255 +1,61 @@
-﻿
-import { useState } from "react";
-
-const teams = [
-    {
-        id: 1,
-        name: "Order of the Phoenix",
-        logo: "static/images/order.png",
-        members: [
-            "Rajashekar", "Lakshmi", "Sai Nandan", "Pratap", "Satish Perla", "Keerthi", "Mayur",
-            "Addanki Sravani", "Sri Harsha", "Manoj", "Raja", "Sai Aashrith", "Prem", "Shashikanth",
-            "Sponditha", "Uma", "Gangadhar", "Goutham", "Sai Krishna", "Nikitha", "Sai Harsha",
-            "Deera", "Ravi Teja",
-        ],
-    },
-    {
-        id: 2,
-        name: "Hufflepuffs",
-        logo: "static/images/hufflepuff.png",
-        members: [
-            "Naveen Babu Yarlagadda",
-            "Mahesh Budgie",
-            "Venkat Guru",
-            "Sanjeva Chepyala",
-            "Geethasowjanya Dommeti",
-            "Ravi Kiran Kurapati",
-            "Saidachary Nadikooda",
-            "Ajay Wankhade",
-            "Mahender Kudumula",
-            "Krishna Kuppa",
-            "Venkatesh Naroju",
-            "Anusha Perumalla",
-            "Pavan Kumar Bandarupalli",
-            "Samara Simha Reddy",
-            "Teja Budda",
-            "Srivathsa Kavirayuni",
-            "Ankit Ghate",
-            "Sarthak Das",
-            "Karthik Karanam",
-            "Prathmesh Nikam",
-            "Samrat Sen",
-            "Shailesh Doiphode",
-            "Trilok Mullapudi",
-            "Uday Kumar Maduri",
-            "Mahesh Guguloth",
-            "Anil Putta",
-        ],
-    },
-    {
-        id: 3,
-        name: "The Goblins",
-        logo: "static/images/goblins.png",
-        members: [
-            "Nitesh Kothyari",
-            "Kadem Narsimha Teja",
-            "Amol Drago",
-            "Rohit Yendapally",
-            "Raj Adapa",
-            "Prasad Chinni",
-            "Okesh G",
-            "Niraj Vinod Walke",
-            "Pravallika S",
-            "Suprabha T",
-            "Jyothirmayi K",
-            "Jagadeesh Kurakula",
-            "Shiva Areva",
-            "Ashok Nalla",
-            "Venkatesh Pvav",
-            "Prasanna Kumar Nadella",
-            "Arun Venkumahanti",
-            "Umamaheswara Gupta Darsi",
-            "Ganesh Sheral",
-            "Ragini Muthireddy",
-            "Poojitha Penmetsa",
-        ],
-    },
-    {
-        id: 4,
-        name: "Gryffindors",
-        logo: "static/images/gry.png",
-        members: [
-            "Vaggu Venkatesh",
-            "Rangu Naveen",
-            "Penmetsa Srikanth",
-            "Chatla Nikhil Kumar",
-            "Anappindi Nagamani",
-            "Maharaju Praveen",
-            "Bhaskar Savilla",
-            "Srimantha Kumar Sethi",
-            "Vamsi Naidu",
-            "Yathishnayan Majji",
-            "Kiran Kumar Garagaparthi",
-            "Manoj Kumar Biroj",
-            "Vijay Sagar Kotha Uppari",
-            "Niharika Naidu",
-            "Satya Sriram Suda",
-            "Khadar Shaik",
-            "Sashank Madhavarapu",
-            "Sai Venkata Tarun Jammalamadaka",
-            "Malleswari Kalanadhabhatla",
-            "Vivek Sonawane",
-        ],
-    },
-    {
-        id: 5,
-        name: "Ravenclaws",
-        logo: "static/images/ravenclaw.png",
-        members: [
-            "Prasanna Kumar",
-            "Ajay",
-            "Ravi Medi",
-            "Harshad",
-            "Hameed",
-            "Mayur",
-            "Arpita",
-            "Lavanya",
-            "Sakshi Pande",
-            "Sai Kumar Badham",
-            "Venkat Reddy",
-            "Koteshwar",
-            "Praneeth Chada",
-            "Soumendra Dalai",
-            "Aditi",
-            "Areef",
-            "Ashish",
-            "Khanishram",
-            "Manikanta Dangeti",
-            "Naveen Budama",
-            "Sharanya",
-            "Shubham",
-            "Suresh",
-            "Supriya",
-            "Anjalir Nagururi",
-        ],
-    },
-    {
-        id: 6,
-        name: "Dark Wizards",
-        logo: "static/images/Death.png",
-        members: [
-            "Satya",
-            "Kalyan T",
-            "Siva Karan",
-            "Mani Teja",
-            "Kunal",
-            "Deep",
-            "Meghana",
-            "Swati",
-            "Sai Ram",
-            "Naga Palapothu",
-            "Vikas",
-            "Pooja Patil",
-            "Sagar E",
-            "Anjani",
-            "Kalyan Shetty",
-            "Sai Venkat",
-            "Divikar",
-            "Vivek Ramanujan",
-            "Rohit G",
-            "Supriya",
-            "Pavan",
-            "Sai Sandya",
-        ],
-    },
-    {
-        id: 7,
-        name: "The Marauders",
-        logo: "static/images/maru.png",
-        members: [
-            "Srikanth Enugula",
-            "Krishna Mohan Sripada",
-            "Bhagya Sree Ande",
-            "Jhansi Talasani",
-            "Gnaneswar",
-            "Raja Vamshi Kalli",
-            "Venkata Sai Saran",
-            "Pavan Sai Valluri",
-            "Suman Penchala",
-            "Murali",
-            "Biswajit Maharana",
-            "Jagan Paniharam",
-            "Bala Alla",
-            "Rana Bagadi",
-            "Manish Monjgiri",
-            "Siva Dindi",
-            "Prudhvi Kothaplii",
-            "Ayesha",
-            "Srinivas Mourya",
-            "Himanshu",
-            "Sahil Bhat",
-            "Rohini Ramba",
-            "Swapnil",
-            "Kishore Kancherla",
-            "Prerna",
-        ],
-    },
-    {
-        id: 8,
-        name: "The Dragons",
-        logo: "static/images/dragon.png",
-        members: [
-            "Aditya Berlikar",
-            "Afzal Ahmed",
-            "Anil Kumar Kavati",
-            "Bharath Nellore",
-            "Deena Vanapalii",
-            "Krishnam Natte",
-            "Muralidhar Boodaraju",
-            "Pradeep Kumar",
-            "Rakesh Bhupathiraju",
-            "Ravi Meruga",
-            "Shashwath Singh",
-            "Sudhakar Talupula",
-            "Vamshi Saddanapu",
-            "Vamsikrishna Burugadda",
-            "Vani Tekula",
-            "Vinay Rallabandi",
-            "Baji Shaik",
-        ],
-    },
-    
-];
-
-
-import PropTypes from "prop-types"; // Import PropTypes for validation
-
+﻿import { useState, useEffect } from "react";
+import axios from "axios";
+import PropTypes from "prop-types";
 
 export default function Teams() {
+    const [teams, setTeams] = useState([
+        { id: 1, name: "Order of the Phoenix", logo: "static/images/order.png", members: [] },
+        { id: 2, name: "Hogwarts Heros", logo: "static/images/hufflepuff.png", members: [] },
+        { id: 3, name: "The Goblins", logo: "static/images/goblins.png", members: [] },
+        { id: 4, name: "Gryffindors", logo: "static/images/gry.png", members: [] },
+        { id: 5, name: "Ravenclaws", logo: "static/images/ravenclaw.png", members: [] },
+        { id: 6, name: "Dark Wizards", logo: "static/images/Death.png", members: [] },
+        { id: 7, name: "The Gaints", logo: "static/images/maru.png", members: [] },
+        { id: 8, name: "The Dragons", logo: "static/images/dragon.png", members: [] },
+    ]);
+
+    useEffect(() => {
+        axios.get("https://scorepoint.onrender.com/api/teams")
+            .then(response => {
+                setTeams(prevTeams =>
+                    prevTeams.map(team => {
+                        const fetchedTeam = response.data.find(t =>
+                            t.name && team.name && t.name.toLowerCase() === team.name.toLowerCase()
+                        );
+                        return fetchedTeam
+                            ? { ...team, members: fetchedTeam.players.map(player => player.name) || [] }
+                            : team;
+                    })
+                );
+            })
+            .catch(error => console.error("Error fetching teams:", error));
+    }, []);
+
     const [selectedTeam, setSelectedTeam] = useState(null);
 
     return (
-        <div className="min-h-screen  p-8 ">
+ 
+        <div className="min-h-screen p-8">
             {selectedTeam ? (
                 <TeamDetails team={selectedTeam} onBack={() => setSelectedTeam(null)} />
             ) : (
-                <TeamsList onSelectTeam={setSelectedTeam} />
+                <TeamsList teams={teams} onSelectTeam={setSelectedTeam} />
             )}
         </div>
     );
 }
 
-// Team List Component
-function TeamsList({ onSelectTeam }) {
+// ✅ Pass `teams` as a prop to `TeamsList`
+function TeamsList({ teams, onSelectTeam }) {
     return (
         <>
-            <h1 className="text-4xl font-bold text-center mb-8"> Teams</h1>
+            <h1 className="text-4xl font-bold text-center mb-8">Teams</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-5 justify-items-center">
                 {teams.map((team) => (
                     <div
                         key={team.id}
                         onClick={() => onSelectTeam(team)}
-                        className="flex flex-col items-center cursor-pointer  text-lg font-semibold hover:text-red-600"
+                        className="flex flex-col items-center cursor-pointer text-lg font-semibold hover:text-red-600"
                     >
                         <img
                             src={team.logo}
@@ -264,11 +70,10 @@ function TeamsList({ onSelectTeam }) {
     );
 }
 
-// Team Details Component
+
 function TeamDetails({ team, onBack }) {
     return (
-        <div className="relative flex flex-col items-center text-gray-900 bg-white max-w-2xl mx-auto p-6 rounded-lg shadow-lg border border-gray-200
-                        before:absolute before:inset-0 before:bg-white before:opacity-50 before:rounded-lg"
+        <div className="relative flex flex-col items-center text-gray-900 bg-white max-w-2xl mx-auto p-6 rounded-lg shadow-lg border border-gray-200"
             style={{
                 backgroundImage: `url(${team.logo})`,
                 backgroundSize: "contain",
@@ -277,21 +82,15 @@ function TeamDetails({ team, onBack }) {
                 filter: "brightness(1)" // Lightens the image
             }}
         >
-            {/* Team Name */}
             <h2 className="text-3xl font-bold mb-6 z-10">{team.name}</h2>
-
-            {/* Team Members Grid */}
             <div className="grid grid-cols-2 gap-4 p-4 z-10">
                 {team.members.map((member, index) => (
                     <div key={index}
-                        className="bg-gray-200 text-gray-800 px-6 py-4 rounded-md shadow-md text-center font-medium
-                                   hover:bg-blue-100 transition duration-200">
+                        className="bg-gray-200 text-gray-800 px-6 py-4 rounded-md shadow-md text-center font-medium hover:bg-blue-100 transition duration-200">
                         {member}
                     </div>
                 ))}
             </div>
-
-            {/* Back Button */}
             <button
                 onClick={onBack}
                 className="mt-6 px-6 py-2 bg-red-600 text-white font-bold rounded-lg shadow-md hover:bg-red-700 hover:shadow-lg transition duration-200 z-10"
@@ -302,10 +101,13 @@ function TeamDetails({ team, onBack }) {
     );
 }
 
-
-
-// ✅ Add PropTypes for validation
 TeamsList.propTypes = {
+    teams: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        logo: PropTypes.string.isRequired,
+        members: PropTypes.arrayOf(PropTypes.string).isRequired
+    })).isRequired,
     onSelectTeam: PropTypes.func.isRequired,
 };
 

@@ -15,10 +15,20 @@ import BCategoryDetails from './assets/bcategorydetails'
 import TTCategoryDetails from './assets/ttcategorydetails'
 import CCategoryDetails from './assets/ccategorydetails'
 import Login from './assets/login'
-
+import AdminDashboard from './assets/adminDashboard'
 import Updates from './assets/updates'
 import SportsDashboard from './assets/rules';
+import TeamsManagement from './assets/teamsmanagement';
+import EditScores from './assets/editscores';
+import Schedule from './assets/schedule';
+import { Navigate } from 'react-router-dom';
 
+
+
+const ProtectedRoute = ({ children }) => {
+    const token = localStorage.getItem("authToken");
+    return token ? children : <Navigate to="/login" />;
+};
 
 function App() {
     return (
@@ -41,6 +51,10 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/rules" element={<SportsDashboard />} />
                 <Route path="/updates" element={<Updates />} />
+                <Route path="/admin-dashboard" element={<ProtectedRoute><AdminDashboard/></ProtectedRoute>} />
+                <Route path="/teamsmangement" element={<ProtectedRoute><TeamsManagement /></ProtectedRoute>} />
+                <Route path="/editscores" element={<ProtectedRoute><EditScores /></ProtectedRoute>} />
+                <Route path="/schedule" element={<ProtectedRoute><Schedule /></ProtectedRoute>} />
                 
             </Routes>
         </Router>
